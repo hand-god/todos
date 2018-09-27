@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="app">
+		<input type="text" placeholder="单价" v-model="price">
+		<input type="text" placeholder="数量" v-model="num">
+		<input type="text" placeholder="总价" v-model="total">
+	</div>
+
+	<script src="./node_modules/vue/dist/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				price: "",
+				num: ""
+			},
+			computed: {
+				total: {
+					set(newValue) {
+						this.num = newValue / this.price
+					},
+					get() {
+						return this.price * this.num
+					}
+				}
+			}
+		})
+
+	</script>
+</body>
+
+</html>
